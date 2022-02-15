@@ -24,9 +24,9 @@ gulp.task('gulp_nodemon', () => {
 
 gulp.task('sync', () => {
   browserSync.init({
-    port: 3002,                          // this can be any port, it will show our app
-    proxy: 'http://localhost:3001/',     // this is the port where express server works
-    ui: { port: 3003 },                  // UI, can be any port
+    port: 5002,                          // this can be any port, it will show our app
+    proxy: 'http://localhost:5001/',     // this is the port where express server works
+    ui: { port: 5003 },                  // UI, can be any port
     reloadDelay: 1000                    // Important, otherwise syncing will not work
   })
 
