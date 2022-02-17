@@ -1,6 +1,10 @@
-# Gridea 主题开发
+## 预览
+预览：https://yquanmei.github.io
 
-**项目各文件夹内已写 README，开发主题前敬请阅读！**
+## 使用
+- 打开Gridea编辑器，点击设置，查找站点源文件路径
+- 下载该代码文件，放入站点源文件路径下的themes
+- Gridea编辑器设置：主题-基础设置，选择主题：Asuncat，保存
 
 ## 开发
 ```
@@ -17,10 +21,5 @@ $ yarn run dev
 
 Gridea 主题开发支持 less，若不熟悉 less 语法，尽可使用 css 语法编写，只不过文件名需要保持 `main.less`
 
-网页链接仅为预览效果所用
-预览：https://yquanmei.github.io
-主题开发文档：https://gridea.dev/theme/
-
-欢迎开发 Gridea 主题！
 
 😘 Enjoy~
