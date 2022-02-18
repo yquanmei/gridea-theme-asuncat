@@ -1,47 +1,49 @@
- <div class="sidebar animated fadeInDown">
-   <div class="logo-title">
+<div class="sidebar animated fadeInDown">
+  <div class="logo-title">
     <div class="title">
-     <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" style="width:127px;" />
-     
+      <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" style="width:127px;" />
+      <h3 title=""><a href="/">
+          <%= themeConfig.siteDescription %>
+        </a></h3>
+      <% if (site.customConfig.gxmz) { %>
+        <div class="description">
+          <p>
+            <%- site.customConfig.gxmz %>
+          </p>
+        </div>
+        <% } %>
 
-  
-     <h3 title=""><a href="/"><%= themeConfig.siteDescription %></a></h3>
-<% if (site.customConfig.gxmz) { %>
-<div class="description">
-      <p><%- site.customConfig.gxmz %></p>
-     </div>
-     <% } %>
-     
     </div>
-   </div>
-   <ul class="social-links">
-<% ['rss','twitter', 'facebook', 'github', 'linkedin', 'youtube','instagram','weibo','qq','send'].forEach((item) => { %>
-<% if (site.customConfig[item]) { %>
-    <li><a href="<%= site.customConfig[item] %>"><i class="fa fa-<%= item %>"></i></a></li>
- <% } %>
-    <% }) %>
-    <% ['yuque'].forEach((item) => { %>
-<% if (site.customConfig[item]) { %>
-    <li><a href="<%= site.customConfig[item] %>"><span class="iconfont icon-yuque"></span></a></li>
- <% } %>
-    <% }) %>
+  </div>
+  <ul class="social-links">
+    <% ['rss','twitter', 'facebook' , 'github' , 'linkedin' , 'youtube'
+      ,'instagram','weibo','qq','send'].forEach((item)=> { %>
+      <% if (site.customConfig[item]) { %>
+        <li><a href="<%= site.customConfig[item] %>"><i class="fa fa-<%= item %>"></i></a></li>
+        <% } %>
+          <% }) %>
+            <% ['yuque'].forEach((item)=> { %>
+              <% if (site.customConfig[item]) { %>
+                <li><a href="<%= site.customConfig[item] %>"><span class="iconfont icon-yuque"></span></a></li>
+                <% } %>
+                  <% }) %>
 
-   </ul>
-   <div class="footer">
+  </ul>
+  <div class="footer">
     <div class="by_farbox">
-   <%- themeConfig.footerInfo %>
+      <%- themeConfig.footerInfo %>
     </div>
     <% if (site.customConfig.ga) { %>
-<script async src="https://www.googletagmanager.com/gtag/js?id=<%= site.customConfig.ga %>"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      <script async src="https://www.googletagmanager.com/gtag/js?id=<%= site.customConfig.ga %>"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', '<%= site.customConfig.ga %>');
-</script>
-<% } %>
+        gtag('config', '<%= site.customConfig.ga %>');
+      </script>
+      <% } %>
 
-    </div>
-   </div>
   </div>
+</div>
+</div>

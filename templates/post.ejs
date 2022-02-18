@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
- <head>
-    <%- include('./includes/head', { siteTitle: `${post.title} | ${themeConfig.siteName}` }) %>
- </head>
- <body>
-    <%- include('./includes/about') %>
-  <div class="main">
-    <%- include('./includes/indexdh') %>
-   <div class="autopagerize_page_element">
-    <div class="content">
-     <div class="post-page">
-      <div class="post animated fadeInDown">
-       <div class="post-title">
-        <h3><a><%= post.title %></a></h3>
-       </div>
-       <div class="post-content">
-        <%- post.content %>
-       </div>
-       <div class="post-footer">
-        <div class="meta">
-         <div class="info">
-          <i class="fa fa-sun-o"></i>
-          <span class="date"><%= post.dateFormat %></span>
-          <i class="fa fa-tag"></i>
-          <% post.tags.forEach(function(tag) { %>
-          <a class="tag" href="<%= tag.link %>" title="<%= tag.name %>"><%= tag.name %> </a>
-          <% }); %>
-         </div>
-        </div>
-       </div>
-      </div>
-      <div class="share">
-       <!-- <div class="evernote">
+
+<head>
+  <%- include('./includes/head', { siteTitle: `${post.title} | ${themeConfig.siteName}` }) %>
+</head>
+
+<body>
+  <%- include('./includes/about') %>
+    <div class="main">
+      <%- include('./includes/indexdh') %>
+        <div class="autopagerize_page_element">
+          <div class="content">
+            <div class="post-page">
+              <div class="post animated fadeInDown">
+                <div class="post-title">
+                  <h3><a>
+                      <%= post.title %>
+                    </a></h3>
+                </div>
+                <div class="post-content">
+                  <%- post.content %>
+                </div>
+                <div class="post-footer post-footer-detail">
+                  <div class="meta">
+                    <div class="info">
+                      <i class="fa fa-sun-o"></i>
+                      <span class="date">
+                        <%= post.dateFormat %>
+                      </span>
+                      <i class="fa fa-tag"></i>
+                      <% post.tags.forEach(function(tag) { %>
+                        <a class="tag" href="<%= tag.link %>" title="<%= tag.name %>">
+                          <%= tag.name %>
+                        </a>
+                        <% }); %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="share">
+                <!-- <div class="evernote">
         <a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a>
        </div>
        <div class="weibo">
@@ -41,28 +49,31 @@
         <a class="fa fa-twitter" href="http://twitter.com/home?status=,<%= post.link %>,;"></a>
        </div>
       </div> -->
-      <div class="pagination">
-       <ul class="clearfix">
-<% if (post.prevPost && !post.hideInList) { %>
-        <li class="pre pagbuttons"><a class="btn" role="navigation" href="<%= post.prevPost.link %>" title="<%= post.prevPost.title %>">上一篇</a></li>
-         <% } %>
-        <% if (post.nextPost && !post.hideInList) { %>
-        <li class="next pagbuttons"><a class="btn" role="navigation" href="<%= post.nextPost.link %>" title=" <%= post.nextPost.title %>">下一篇</a></li>
-        <% } %>
-       </ul>
-      </div>
-        <% if (typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-          <% if (commentSetting.commentPlatform === 'gitalk') { %>
-            <%- include('./includes/gitalk') %>
-          <% } %>
-          <% if (commentSetting.commentPlatform === 'disqus') { %>
-            <%- include('./includes/disqus') %>
-          <% } %>
-        <% } %>
-     </div>
-    </div>
-   </div>
-  </div>
- <%- include('./includes/footjs') %>
- </body>
+                <div class="pagination">
+                  <ul class="clearfix">
+                    <% if (post.prevPost && !post.hideInList) { %>
+                      <li class="pre pagbuttons"><a class="btn" role="navigation" href="<%= post.prevPost.link %>"
+                          title="<%= post.prevPost.title %>">上一篇</a></li>
+                      <% } %>
+                        <% if (post.nextPost && !post.hideInList) { %>
+                          <li class="next pagbuttons"><a class="btn" role="navigation" href="<%= post.nextPost.link %>"
+                              title=" <%= post.nextPost.title %>">下一篇</a></li>
+                          <% } %>
+                  </ul>
+                </div>
+                <% if (typeof commentSetting !=='undefined' && commentSetting.showComment) { %>
+                  <% if (commentSetting.commentPlatform==='gitalk' ) { %>
+                    <%- include('./includes/gitalk') %>
+                      <% } %>
+                        <% if (commentSetting.commentPlatform==='disqus' ) { %>
+                          <%- include('./includes/disqus') %>
+                            <% } %>
+                              <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%- include('./includes/footjs') %>
+</body>
+
 </html>
