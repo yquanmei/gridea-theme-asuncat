@@ -1,3 +1,9 @@
+<!--
+ * @Author: yquanmei
+ * @Date: 2022-02
+ * @LastEditors: yquanmei
+ * @LastEditTime: 2022-02
+-->
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -24,16 +30,20 @@
                 <div class="post-footer">
                   <div class="meta">
                     <div class="info">
-                      <i class="fa fa-sun-o"></i>
-                      <span class="date">
-                        <%= post.dateFormat %>
+                      <span class="article-foot">
+                        <i class="fa fa-sun-o"></i>
+                        <span class="date">
+                          <%= post.dateFormat %>
+                        </span>
                       </span>
-                      <i class="fa fa-tag"></i>
-                      <% post.tags.forEach(function(tag) { %>
-                        <a class="tag" href="<%= tag.link %>" title="<%= tag.name %>">
-                          <%= tag.name %>
-                        </a>
-                        <% }); %>
+                      <span class="article-foot">
+                        <i class="fa fa-tag"></i>
+                        <% post.tags.forEach(function(tag) { %>
+                          <a class="tag" href="<%= tag.link %>" title="<%= tag.name %>">
+                            <%= tag.name %>
+                          </a>
+                          <% }); %>
+                      </span>
                     </div>
                   </div>
                 </div>

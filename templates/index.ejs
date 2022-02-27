@@ -1,74 +1,90 @@
+<!--
+ * @Author: yquanmei
+ * @Date: 2022-02
+ * @LastEditors: yquanmei
+ * @LastEditTime: 2022-02
+-->
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <%- include('./includes/head', { siteTitle: themeConfig.siteName }) %>
-  </head>
 
-  <body>
-    <%- include('./includes/about') %>
+<head>
+  <%- include('./includes/head', { siteTitle: themeConfig.siteName }) %>
+</head>
+
+<body>
+  <%- include('./includes/about') %>
     <div class="main">
       <%- include('./includes/dh') %>
-      <div class="autopagerize_page_element">
-        <div class="content">
-          <% posts.forEach(function(post) { %>
-          <div class="post-container animated fadeInDown">
-            <% if (themeConfig.showFeatureImage && post.feature) { %>
-            <a href="<%= post.link %>">
-              <div
-                class="feature-container"
-                style="
+        <div class="autopagerize_page_element">
+          <div class="content">
+            <% posts.forEach(function(post) { %>
+              <div class="post-container animated fadeInDown">
+                <% if (themeConfig.showFeatureImage && post.feature) { %>
+                  <a href="<%= post.link %>">
+                    <div class="feature-container" style="
                   background: url('<%= post.feature %>') no-repeat;
                   background-size: contain;
-                "
-              ></div>
-            </a>
-            <% } %>
-            <div class="post post-txt-container">
-              <div class="post-title">
-                <h3><a href="<%= post.link %>"> <%= post.title %> </a></h3>
+                "></div>
+                  </a>
+                  <% } %>
+                    <div class="post post-txt-container">
+                      <div class="post-title">
+                        <h3><a href="<%= post.link %>">
+                            <%= post.title %>
+                          </a></h3>
+                      </div>
+                      <div class="post-content">
+                        <%- post.abstract %>
+                      </div>
+                      <div class="post-footer">
+                        <div class="meta">
+                          <div class="info">
+                            <span class="article-foot">
+                              <i class="fa fa-sun-o"></i>
+                              <span class="date">
+                                <%= post.dateFormat %>
+                              </span>
+                            </span>
+                            <span class="article-foot">
+                              <i class="fa fa-user"></i>
+                              <span>
+                              </span>
+                              <%= post.author %>
+                            </span>
+                            <% if (post.tags.length> 0) { %>
+                              <span class="article-foot">
+                                <i class="fa fa-tag"></i>
+                                <% post.tags.forEach(function(tag) { %>
+                                  <a class="tag" href="<%= tag.link %>" title="<%= tag.name %>">
+                                    <%= tag.name %>
+                                  </a>
+                                  <% }); %>
+                              </span>
+                              <%} %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
               </div>
-              <div class="post-content"><%- post.abstract %></div>
-              <div class="post-footer">
-                <div class="meta">
-                  <div class="info">
-                    <i class="fa fa-sun-o"></i>
-                    <span class="date"> <%= post.dateFormat %> </span>
-                    <i class="fa fa-tag"></i>
-                    <% post.tags.forEach(function(tag) { %>
-                    <a
-                      class="tag"
-                      href="<%= tag.link %>"
-                      title="<%= tag.name %>"
-                    >
-                      <%= tag.name %>
-                    </a>
-                    <% }); %>
-                  </div>
+              <% }); %>
+                <div class="pagination">
+                  <ul class="clearfix">
+                    <% if (pagination.prev) { %>
+                      <li class="pre pagbuttons">
+                        <a class="btn" role="navigation" href="<%= pagination.prev %>">上一页</a>
+                      </li>
+                      <% } %>
+                        <% if (pagination.next) { %>
+                          <li class="next pagbuttons">
+                            <a class="btn" role="navigation" href="<%= pagination.next %>">下一页</a>
+                          </li>
+                          <% } %>
+                  </ul>
                 </div>
-              </div>
-            </div>
-          </div>
-          <% }); %>
-          <div class="pagination">
-            <ul class="clearfix">
-              <% if (pagination.prev) { %>
-              <li class="pre pagbuttons">
-                <a class="btn" role="navigation" href="<%= pagination.prev %>"
-                  >上一页</a
-                >
-              </li>
-              <% } %> <% if (pagination.next) { %>
-              <li class="next pagbuttons">
-                <a class="btn" role="navigation" href="<%= pagination.next %>"
-                  >下一页</a
-                >
-              </li>
-              <% } %>
-            </ul>
           </div>
         </div>
-      </div>
     </div>
     <%- include('./includes/footjs') %>
-  </body>
+</body>
+
 </html>
